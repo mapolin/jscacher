@@ -1,7 +1,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Particles</title>
+    <title>Cacher</title>
     <script src="cacher.js" type="text/javascript"></script>
     <style>
         * { margin: 0; padding: 0; }
@@ -11,10 +11,15 @@
     <div id="cacheME">text to cache</div>
 <script>
 window.onload = function() {
-    var c3 = new Cache({elem: document.getElementById('cacheME')});
-    //c3.set({text: c3.elem.innerHTML});
+    var DOM = new Cache({elem: document.getElementById('cacheME')});
+    var DATE = new Cache(new Date());
+    var obj = new Cache({x:0, y:0, init: function(){}});
 
-    console.log(c3);
+    var collection = new Cache({dom: DOM, date: DATE, obj: obj});
+    var nested = new Cache(DOM);
+
+    console.dir(collection);
+    console.dir(nested);
 }
 </script>
 </body>
