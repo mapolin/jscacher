@@ -11,18 +11,12 @@
     <div id="cacheME">text to cache</div>
 <script>
 window.onload = function() {
-    var DOM = new Cache({elem: document.getElementById('cacheME')});
-    var DATE = new Cache(new Date());
-    var obj = new Cache({x:0, y:0, init: function(){}});
+    var currentDate = new Cache(new Date());
+    var div = document.getElementById('cacheME');
 
-    var collection = new Cache({dom: DOM, date: DATE, obj: obj});
-    var nested = new Cache(DOM);
+    window.page = new Cache({elem: div, text: div.innerHTML, date: currentDate});
 
-    console.dir(collection);
-    console.dir(nested);
-    console.dir(DOM);
-    console.dir(DATE);
-    console.dir(obj);
+    console.dir(page);
 }
 </script>
 </body>

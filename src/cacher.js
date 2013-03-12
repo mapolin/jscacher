@@ -55,6 +55,20 @@ function Cache(map) {
         }
         this.map = void(0);
     };
+
+    this.cookie = function(name, expires) {
+        var value = this.map;
+        var name = name;
+        var expr = new Date();
+        expr.setDate( new Date().getDate() + expires );
+        expr = expr.toUTCString();
+
+        return name + '=' + value + ';expires=' + expr;
+    };
+
+    this.addCookie = function(name, expires) {
+        document.cookie = this.cookie(name, expires);
+    };
     
     this.update();
 };
