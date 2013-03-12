@@ -17,7 +17,7 @@ function Cache(map) {
     this.update = function() {
         if( !this.map ) return;
         
-        if(typeof this.map != 'object') 
+        if(typeof this.map != 'object')
             this.map = {'value': this.map};
         
         if(typeof this.map['__ID__'] != 'undefined' && this.map['__ID__'] != this.__ID__) {
@@ -47,7 +47,7 @@ function Cache(map) {
                     delete this[prop];
                 }
             }
-        }  
+        }
     };
     
     this.update();
