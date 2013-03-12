@@ -1,7 +1,7 @@
 function Cache(map) {
     this.map = map;
     
-    this.__ID__ = 'cache-id-' + (new Date()).getMilliseconds();
+    this.__ID__ = 'cache-id-' + Math.floor(Math.random() * (new Date()).getMilliseconds());
     
     this.set = function(property, value) {
         if( typeof property == 'object' && !value ) {
