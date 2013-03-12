@@ -28,7 +28,7 @@ function Cache(map) {
 
         if(typeof this.map == 'object') {
             if(this.map.constructor && this.map.constructor.name) {
-                if(window.hasOwnProperty(this.map.constructor.name)) {
+                if(window.hasOwnProperty(this.map.constructor.name) && this.map.constructor.name.toLowerCase() != 'object') {
                     this[this.map.constructor.name] = this.map;
                     return;
                 }
@@ -39,6 +39,11 @@ function Cache(map) {
             this[prop] = this.map[prop];
         }
     };
+
+    this.clone = function() {
+        var tmp = new Cache(this.map);
+        return tmp;
+    };
     
     this.clear = function() {
         for(var prop in this) {
@@ -48,6 +53,7 @@ function Cache(map) {
                 }
             }
         }
+        this.map = void(0);
     };
     
     this.update();
