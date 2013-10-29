@@ -11,7 +11,7 @@
     <div id="cacheME">text to cache</div>
 <script>
 window.onload = function() {
-    var currentDate = new Cache(new Date());
+    var currentDate = new Date();
     var div = document.getElementById('cacheME');
 
     window.page = new Cache({elem: div, text: div.innerHTML, date: currentDate});
