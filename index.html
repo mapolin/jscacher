@@ -14,9 +14,32 @@ window.onload = function() {
     var currentDate = new Date();
     var div = document.getElementById('cacheME');
 
-    window.page = new Cache({elem: div, text: div.innerHTML, date: currentDate});
+    var scope = function() {
+        console.log(this.__ID__);
+    }
 
-    console.dir(page);
+    window.page = new Cache({
+        elem: div, 
+        text: div.innerHTML, 
+        date: currentDate,
+        childFunc: scope
+    });
+
+    window.functions = new Cache({
+        funcParam: function(param1, param2) {
+            console.log(param1, param2);
+        },
+        funcScope: scope,
+        child: page.clone(),
+        funcChild: function() {
+            console.log(this.__ID__);
+            this.child.childFunc();
+        }
+    });
+
+    window.inheritance = window.functions.clone();
+
+    console.dir(page);  
 }
 </script>
 </body>
